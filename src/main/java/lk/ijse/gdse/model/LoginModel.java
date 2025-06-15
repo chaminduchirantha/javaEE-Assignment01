@@ -1,8 +1,8 @@
-package lk.ijse.gdse;
+package lk.ijse.gdse.model;
 
 import java.sql.*;
 
-public class LoginDao {
+public class LoginModel {
     public String checkLogin(String username, String password){
         String url = "jdbc:mysql://localhost:3306/cms";
         String user = "root";
