@@ -16,7 +16,7 @@
                     <h4>Login to CMS</h4>
                 </div>
                 <div class="card-body">
-                    <form action="LoginServlet">
+                    <form action="loginServlet">
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" name="username" class="form-control" id="username" placeholder="Enter User Name" required>
