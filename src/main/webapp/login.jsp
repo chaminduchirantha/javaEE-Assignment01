@@ -8,6 +8,13 @@
 </head>
 <body class="bg-light">
 
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="#">CMS</a>
+    </div>
+</nav>
+
 <div class="container vh-100 d-flex align-items-center justify-content-center">
     <div class="row w-100 justify-content-center">
         <div class="col-md-5">

@@ -6,11 +6,16 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class ComplainModel {
+
+    String url = "jdbc:mysql://localhost:3306/cms";
+    String user = "root";
+    String pass = "1234";
+
     public boolean saveComplaint(String complaintId , String userName, String subject, String date, String description) {
-        String url = "jdbc:mysql://localhost:3306/cms";
-        String user = "root";
-        String pass = "1234";
+
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -35,9 +40,6 @@ public class ComplainModel {
 
     public List<ComplainDto> getComplaintsByUser(String userName) {
         List<ComplainDto> complaints = new ArrayList<>();
-        String url = "jdbc:mysql://localhost:3306/cms";
-        String user = "root";
-        String pass = "1234";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -66,10 +68,6 @@ public class ComplainModel {
 
     public List<ComplainDto> getAllComplaints(String uname, String subject, String description, String userName) {
         List<ComplainDto> complaints = new ArrayList<>();
-        String url = "jdbc:mysql://localhost:3306/cms";
-        String user = "root";
-        String pass = "1234";
-
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(url, user, pass);
@@ -94,10 +92,6 @@ public class ComplainModel {
     }
 
     public boolean updateComplaint(String complaintId, String userName, String subject, String date, String description) {
-        String url = "jdbc:mysql://localhost:3306/cms";
-        String user = "root";
-        String pass = "1234";
-
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(url, user, pass);
@@ -121,10 +115,6 @@ public class ComplainModel {
 
 
     public boolean deleteComplaint(String cid) {
-        String url = "jdbc:mysql://localhost:3306/cms";
-        String user = "root";
-        String pass = "1234";
-
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(url, user, pass);
@@ -141,5 +131,4 @@ public class ComplainModel {
         }
         return false;
     }
-
 }

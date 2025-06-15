@@ -2,12 +2,13 @@ package lk.ijse.gdse.model;
 
 import java.sql.*;
 
-public class LoginModel {
-    public String checkLogin(String username, String password){
-        String url = "jdbc:mysql://localhost:3306/cms";
-        String user = "root";
-        String pass = "1234";
 
+
+public class LoginModel {
+    String url = "jdbc:mysql://localhost:3306/cms";
+    String user = "root";
+    String pass = "1234";
+    public String checkLogin(String username, String password){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(url,user,pass);

@@ -16,6 +16,16 @@
 </head>
 <body>
 
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="#">CMS</a>
+        <div class="d-flex">
+            <a href="login.jsp" class="btn btn-outline-light btn-sm">Logout</a>
+        </div>
+    </div>
+</nav>
+
 <div class="container mt-5">
     <h3>All Complaints (Admin View)</h3>
     <%
@@ -45,7 +55,7 @@
             <td><%= c.getDescription() %></td>
             <td><%= c.getDate() %></td>
             <td>
-                <form action="complaint" method="post" style="display:inline-block">
+                <form action="updateForm.jsp" method="post" style="display:inline-block">
                     <input type="hidden" name="action" value="update">
                     <input type="hidden" name="cid" value="<%= c.getCid() %>">
                     <input type="hidden" name="uname" value="<%= c.getUname() %>">
@@ -54,6 +64,7 @@
                     <input type="hidden" name="date" value="<%= c.getDate() %>">
                     <button type="submit" class="btn btn-warning btn-sm">Update</button>
                 </form>
+
 
                 <form action="complaint" method="post" style="display:inline-block">
                     <input type="hidden" name="action" value="delete">
