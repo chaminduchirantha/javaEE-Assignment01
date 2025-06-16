@@ -22,8 +22,9 @@ public class AdminComplaintController extends HttpServlet {
                 String subject = req.getParameter("subject");
                 String description = req.getParameter("description");
                 String date = req.getParameter("date");
+                String status = req.getParameter("status");
 
-                boolean updated = model.updateComplaint(cid, uname, subject, date, description);
+                boolean updated = model.updateComplaint(cid, uname, subject, date, description,status);
 
                 if (updated) {
                     req.setAttribute("message", "Complaint Updated Successfully");
@@ -31,7 +32,6 @@ public class AdminComplaintController extends HttpServlet {
                 } else {
                     req.setAttribute("message", "Update Failed");
                     System.out.println("complaint updated not successfully");
-
                 }
 
                 req.getRequestDispatcher("adminDashBord.jsp").forward(req, resp);

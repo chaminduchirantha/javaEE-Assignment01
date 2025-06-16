@@ -33,9 +33,10 @@
         String subject = request.getParameter("subject");
         String  description = request.getParameter("Description");
         String date = request.getParameter("date");
+        String status = request.getParameter("status");
 
         ComplainModel model = new ComplainModel();
-        List<ComplainDto> complaints = model.getAllComplaints(uname ,subject,description,date);
+        List<ComplainDto> complaints = model.getAllComplaints(uname ,subject,description,date,status);
     %>
     <table class="table table-bordered">
         <thead class="table-warning">
@@ -44,6 +45,7 @@
             <th>Subject</th>
             <th>description</th>
             <th>date</th>
+            <th>status</th>
             <th>action</th>
         </tr>
         </thead>
@@ -54,6 +56,7 @@
             <td><%= c.getSubject() %></td>
             <td><%= c.getDescription() %></td>
             <td><%= c.getDate() %></td>
+            <td><%= c.getStatus() %></td>
             <td>
                 <form action="updateForm.jsp" method="post" style="display:inline-block">
                     <input type="hidden" name="action" value="update">
@@ -62,9 +65,9 @@
                     <input type="hidden" name="subject" value="<%= c.getSubject() %>">
                     <input type="hidden" name="description" value="<%= c.getDescription() %>">
                     <input type="hidden" name="date" value="<%= c.getDate() %>">
+                    <input type="hidden" name="status" value="<%= c.getStatus() %>">
                     <button type="submit" class="btn btn-warning btn-sm">Update</button>
                 </form>
-
 
                 <form action="complaint" method="post" style="display:inline-block">
                     <input type="hidden" name="action" value="delete">
