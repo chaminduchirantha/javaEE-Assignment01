@@ -28,6 +28,7 @@
             <th>Subject</th>
             <th>Description</th>
             <th>Date</th>
+            <th>status</th>
         </tr>
         </thead>
         <tbody>
@@ -37,6 +38,26 @@
             <td><%= c.getSubject() %></td>
             <td><%= c.getDescription() %></td>
             <td><%= c.getDate() %></td>
+            <td><%= c.getStatus() %></td>
+            <td>
+                <form action="updateUserComplaint.jsp" method="post" style="display:inline-block">
+                    <input type="hidden" name="action" value="update">
+                    <input type="hidden" name="cid" value="<%= c.getCid() %>">
+                    <input type="hidden" name="uname" value="<%= c.getUname() %>">
+                    <input type="hidden" name="subject" value="<%= c.getSubject() %>">
+                    <input type="hidden" name="description" value="<%= c.getDescription() %>">
+                    <input type="hidden" name="date" value="<%= c.getDate() %>">
+                    <input type="hidden" name="status" value="<%= c.getStatus() %>">
+                    <button type="submit" class="btn btn-warning btn-sm">Update</button>
+                </form>
+
+
+                <form action="userComplaint" method="post" style="display:inline-block">
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="cid" value="<%= c.getCid() %>">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
         </tr>
         <% } %>
         </tbody>

@@ -34,7 +34,7 @@
                     <form action="SubmitComplaintServlet" method="post">
                         <div class="mb-3">
                             <label class="form-label">user Name</label>
-                            <input type="text" name="username" class="form-control" placeholder="Enter User Name" required/>
+                            <input type="text" name="username" id="username" class="form-control" placeholder="Enter User Name" required/>
                         </div>
 
                         <div class="mb-3">
@@ -57,6 +57,13 @@
                         </div>
                     </form>
 
+                    <form action="userComplaintView" method="post">
+                        <input type="hidden" name="uname" id="hiddenUname">
+                        <div class="mb-3 text-start">
+                            <button type="submit" class="btn btn-outline-primary">View My Complaints</button>
+                        </div>
+                    </form>
+
                     <c:if test="${not empty message}">
                         <div class="alert alert-info mt-3"></div>
                     </c:if>
@@ -68,3 +75,14 @@
 
 </body>
 </html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const usernameInput = document.getElementById('username');
+        const hiddenInput = document.getElementById('hiddenUname');
+
+        usernameInput.addEventListener('input', function () {
+            hiddenInput.value = usernameInput.value;
+        });
+    });
+</script>

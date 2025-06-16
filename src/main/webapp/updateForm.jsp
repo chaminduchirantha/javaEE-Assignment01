@@ -43,6 +43,10 @@
           <label>Date</label>
           <input type="date" name="date" class="form-control" value="<%= request.getParameter("date") %>" required>
         </div>
+        <div class="mb-3">
+          <label>status</label>
+          <input type="text" name="status" class="form-control" value="<%= request.getParameter("status") %>" required>
+        </div>
 
         <div class="text-end">
           <button type="submit" class="btn btn-primary">Update Complaint</button>
