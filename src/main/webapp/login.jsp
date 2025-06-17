@@ -9,6 +9,7 @@
 <body class="bg-light">
 
 
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
         <a class="navbar-brand" href="#">CMS</a>
@@ -44,5 +45,12 @@
         </div>
     </div>
 </div>
+
+<% String msg = (String) request.getAttribute("message"); %>
+<% if (msg != null) { %>
+<script>
+    alert("<%= msg %>");
+</script>
+<% } %>
 </body>
 </html>
