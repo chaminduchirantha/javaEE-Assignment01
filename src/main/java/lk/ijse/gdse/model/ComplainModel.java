@@ -1,6 +1,7 @@
 package lk.ijse.gdse.model;
 
 import lk.ijse.gdse.dto.ComplainDto;
+import lk.ijse.gdse.utill.DBConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -43,8 +44,8 @@ public class ComplainModel {
         List<ComplainDto> complaints = new ArrayList<>();
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(url, user, pass);
+
+            Connection connection = DBConnection.getConnection();
 
             String sql = "SELECT * FROM complaint WHERE uname = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -72,9 +73,7 @@ public class ComplainModel {
     public List<ComplainDto> getAllComplaints(String uname, String subject, String description, String date , String status) {
         List<ComplainDto> complaints = new ArrayList<>();
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(url, user, pass);
-
+            Connection connection = DBConnection.getConnection();
             String sql = "SELECT * FROM complaint";
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
@@ -97,9 +96,7 @@ public class ComplainModel {
 
     public boolean updateComplaint(String complaintId, String userName, String subject, String date, String description, String status) {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(url, user, pass);
-
+            Connection connection = DBConnection.getConnection();
             String sql = "UPDATE complaint SET uname = ?, subject = ?, description = ?, date = ?, status = ? WHERE cid = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, userName);
@@ -112,7 +109,7 @@ public class ComplainModel {
             int result = stmt.executeUpdate();
             return result > 0;
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
