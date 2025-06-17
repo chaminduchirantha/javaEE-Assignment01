@@ -50,7 +50,7 @@
 
                 <div class="text-end">
                     <button type="submit" class="btn btn-primary">Update Complaint</button>
-                    <a href="userComplaint.jsp" class="btn btn-secondary">Cancel</a>
+<%--                    <a href="userComplaint.jsp" class="btn btn-secondary">Cancel</a>--%>
                 </div>
             </form>
         </div>

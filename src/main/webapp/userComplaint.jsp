@@ -14,6 +14,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="#">CMS</a>
+        <div class="d-flex">
+            <a href="userDashBoard.jsp" class="btn btn-outline-light btn-sm">+New Complaint</a>
+            <a href="login.jsp" class="btn btn-outline-light btn-sm">Logout</a>
+        </div>
+    </div>
+</nav>
 <div class="container mt-5">
     <h3>My Complaints</h3>
     <%
