@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import lk.ijse.gdse.model.LoginModel;
 
 import java.io.IOException;
@@ -16,20 +17,33 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
+        if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
+            req.setAttribute("message", "Please fill in all fields.");
+            req.getRequestDispatcher("login.jsp").forward(req, resp);
+            return;
+        }
+
         LoginModel loginDao = new LoginModel();
         String role = String.valueOf(loginDao.checkLogin(username,password));
 
         if (role != null) {
+            HttpSession session = req.getSession();
+            session.setAttribute("uname", username);
             if (role.equals("admin")) {
-                resp.sendRedirect("adminDashBord.jsp");
+                req.setAttribute("message", "Login successful! Welcome Admin.");
+                req.getRequestDispatcher("adminDashBord.jsp").forward(req, resp);
+
             } else if (role.equals("user")) {
-                resp.sendRedirect("userDashBoard.jsp");
+                req.setAttribute("message", "Login successful! Welcome User.");
+                req.getRequestDispatcher("userDashBoard.jsp").forward(req, resp);
             } else {
                 System.out.println("Invalid username or password");
-                resp.sendRedirect("login.jsp");
+                req.setAttribute("message", "Invalid role. Please contact admin.");
+                req.getRequestDispatcher("login.jsp").forward(req, resp);
             }
         } else {
-            resp.sendRedirect("login.jsp");
+            req.setAttribute("message", "Invalid username or password.");
+            req.getRequestDispatcher("login.jsp").forward(req, resp);
         }
 
         System.out.println("Username: " + username);
