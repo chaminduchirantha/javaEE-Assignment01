@@ -1,19 +1,21 @@
 package lk.ijse.gdse.dto;
 
 public class ComplainDto {
-    private String cid, uname, subject, description, date;
+    private String cid, uname, subject, description, date ,status;
 
-    public ComplainDto(String cid, String uname, String subject, String description, String date) {
+    public ComplainDto(String cid, String uname, String subject, String description, String date, String status) {
         this.cid = cid;
         this.uname = uname;
         this.subject = subject;
         this.description = description;
         this.date = date;
+        this.status = status;
     }
 
     public ComplainDto() {
 
     }
+
     public String getCid() {
         return cid;
     }
@@ -28,6 +30,13 @@ public class ComplainDto {
     }
     public String getDate() {
         return date;
+    }
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
     }
     public void setCid(String cid) {
         this.cid = cid;
