@@ -19,11 +19,12 @@ public class SubmitComplaintServlet extends HttpServlet {
         String subject = req.getParameter("subject");
         String description = req.getParameter("description");
         String date = req.getParameter("date");
+        String status = req.getParameter("status");
 
         System.out.println("uname: " + userName); // Debug print
 
         ComplainModel model = new ComplainModel();
-        boolean isSaved = model.saveComplaint(complaintId, userName, subject, date, description); // correct order
+        boolean isSaved = model.saveComplaint(complaintId, userName, subject, date, description,status);
 
         if (isSaved) {
             resp.sendRedirect("userComplaint.jsp?uname=" + userName);

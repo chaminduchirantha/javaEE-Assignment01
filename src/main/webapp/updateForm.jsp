@@ -21,35 +21,16 @@
     </div>
     <div class="card-body">
       <form action="complaint" method="post">
-        <input type="hidden" name="action" value="update">
+        <input type="hidden" name="action" value="updateStatusOnly">
         <input type="hidden" name="cid" value="<%= request.getParameter("cid") %>">
 
         <div class="mb-3">
-          <label>User Name</label>
-          <input type="text" name="uname" class="form-control" value="<%= request.getParameter("uname") %>" required>
-        </div>
-
-        <div class="mb-3">
-          <label>Subject</label>
-          <input type="text" name="subject" class="form-control" value="<%= request.getParameter("subject") %>" required>
-        </div>
-
-        <div class="mb-3">
-          <label>Description</label>
-          <textarea name="description" class="form-control" required><%= request.getParameter("description") %></textarea>
-        </div>
-
-        <div class="mb-3">
-          <label>Date</label>
-          <input type="date" name="date" class="form-control" value="<%= request.getParameter("date") %>" required>
-        </div>
-        <div class="mb-3">
-          <label>status</label>
+          <label>Status</label>
           <input type="text" name="status" class="form-control" value="<%= request.getParameter("status") %>" required>
         </div>
 
         <div class="text-end">
-          <button type="submit" class="btn btn-primary">Update Complaint</button>
+          <button type="submit" class="btn btn-primary">Update Status</button>
           <a href="adminDashBord.jsp" class="btn btn-secondary">Cancel</a>
         </div>
       </form>

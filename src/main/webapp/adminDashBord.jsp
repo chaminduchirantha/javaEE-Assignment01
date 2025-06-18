@@ -68,7 +68,6 @@
                     <input type="hidden" name="status" value="<%= c.getStatus() %>">
                     <button type="submit" class="btn btn-warning btn-sm">Update</button>
                 </form>
-
                 <form action="complaint" method="post" style="display:inline-block">
                     <input type="hidden" name="action" value="delete">
                     <input type="hidden" name="cid" value="<%= c.getCid() %>">

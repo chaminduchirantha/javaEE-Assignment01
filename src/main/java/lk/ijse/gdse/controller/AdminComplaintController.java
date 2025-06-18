@@ -16,22 +16,18 @@ public class AdminComplaintController extends HttpServlet {
         ComplainModel model = new ComplainModel();
 
         switch (action) {
-            case "update":
+            case "updateStatusOnly":
                 String cid = req.getParameter("cid");
-                String uname = req.getParameter("uname");
-                String subject = req.getParameter("subject");
-                String description = req.getParameter("description");
-                String date = req.getParameter("date");
                 String status = req.getParameter("status");
 
-                boolean updated = model.updateComplaint(cid, uname, subject, date, description,status);
+                boolean statusUpdated = model.updateComplaintStatus(cid, status);
 
-                if (updated) {
-                    req.setAttribute("message", "Complaint Updated Successfully");
-                    System.out.println("complaint updated successfully");
+                if (statusUpdated) {
+                    req.setAttribute("message", "Status Updated Successfully");
+                    System.out.println("Status updated successfully");
                 } else {
-                    req.setAttribute("message", "Update Failed");
-                    System.out.println("complaint updated not successfully");
+                    req.setAttribute("message", "Status Update Failed");
+                    System.out.println("Status update failed");
                 }
 
                 req.getRequestDispatcher("adminDashBord.jsp").forward(req, resp);

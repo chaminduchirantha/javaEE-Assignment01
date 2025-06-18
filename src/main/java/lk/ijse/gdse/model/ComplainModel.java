@@ -133,4 +133,19 @@ public class ComplainModel {
         }
         return false;
     }
+
+
+    public boolean updateComplaintStatus(String cid, String status) {
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement pst = con.prepareStatement("UPDATE complaint SET status=? WHERE cid=?")) {
+
+            pst.setString(1, status);
+            pst.setString(2, cid);
+
+            return pst.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
