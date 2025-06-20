@@ -5,8 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lk.ijse.gdse.model.ComplainModel;
-import lk.ijse.gdse.dto.ComplainDto;
+import lk.ijse.gdse.Dao.ComplainModel;
+import lk.ijse.gdse.model.ComplainDto;
 
 import java.io.IOException;
 import java.util.List;

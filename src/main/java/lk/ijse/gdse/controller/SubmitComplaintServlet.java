@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lk.ijse.gdse.model.ComplainModel;
+import lk.ijse.gdse.Dao.ComplainModel;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -27,6 +27,7 @@ public class SubmitComplaintServlet extends HttpServlet {
         boolean isSaved = model.saveComplaint(complaintId, userName, subject, date, description,status);
 
         if (isSaved) {
+            req.setAttribute("message", "complaint Submit Successful");
             resp.sendRedirect("userComplaint.jsp?uname=" + userName);
         } else {
             req.setAttribute("message", "Failed to submit complaint.");
