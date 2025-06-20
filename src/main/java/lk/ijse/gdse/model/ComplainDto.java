@@ -1,4 +1,4 @@
-package lk.ijse.gdse.dto;
+package lk.ijse.gdse.model;
 
 public class ComplainDto {
     private String cid, uname, subject, description, date ,status;

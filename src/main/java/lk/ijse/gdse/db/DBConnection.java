@@ -1,4 +1,4 @@
-package lk.ijse.gdse.utill;
+package lk.ijse.gdse.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

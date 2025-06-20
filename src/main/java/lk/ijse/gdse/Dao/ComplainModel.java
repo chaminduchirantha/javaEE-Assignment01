@@ -1,7 +1,7 @@
-package lk.ijse.gdse.model;
+package lk.ijse.gdse.Dao;
 
-import lk.ijse.gdse.dto.ComplainDto;
-import lk.ijse.gdse.utill.DBConnection;
+import lk.ijse.gdse.model.ComplainDto;
+import lk.ijse.gdse.db.DBConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
