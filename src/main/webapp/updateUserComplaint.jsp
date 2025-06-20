@@ -45,7 +45,7 @@
                 </div>
                 <div class="mb-3">
                     <label>status</label>
-                    <input type="text" name="status" class="form-control" value="<%= request.getParameter("status") %>" required>
+                    <input type="text" name="status" class="form-control" value="<%= request.getParameter("status") %>" required readonly>
                 </div>
 
                 <div class="text-end">

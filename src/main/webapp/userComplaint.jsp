@@ -5,8 +5,8 @@
   Time: 12:19 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="java.util.*, lk.ijse.gdse.model.*, lk.ijse.gdse.dto.ComplainDto" %>
-<%@ page import="lk.ijse.gdse.dto.ComplainDto" %>
+<%@ page import="java.util.*, lk.ijse.gdse.Dao.*, lk.ijse.gdse.model.ComplainDto" %>
+<%@ page import="lk.ijse.gdse.model.ComplainDto" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -27,7 +27,12 @@
 <div class="container mt-5">
     <h3>My Complaints</h3>
     <%
-        String uname = request.getParameter("uname");
+        String uname = (String) session.getAttribute("uname");
+        if (uname == null) {
+            response.sendRedirect("login.jsp");
+            return;
+        }
+
         ComplainModel model = new ComplainModel();
         List<ComplainDto> complaints = model.getComplaintsByUser(uname);
     %>
@@ -39,6 +44,7 @@
             <th>Description</th>
             <th>Date</th>
             <th>status</th>
+            <th>action</th>
         </tr>
         </thead>
         <tbody>
@@ -73,5 +79,34 @@
         </tbody>
     </table>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<%
+    String msg = (String) request.getAttribute("message");
+    String icon = "success";
+    String title = "Success";
+
+    if (msg != null) {
+        if (msg.toLowerCase().contains("fail")) {
+            icon = "error";
+            title = "Error";
+        } else if (msg.toLowerCase().contains("delete")) {
+            title = "Delete Success";
+        } else if (msg.toLowerCase().contains("update")) {
+            title = "Update Success";
+        }
+%>
+<script>
+    Swal.fire({
+        icon: '<%= icon %>',
+        title: '<%= title %>',
+        text: '<%= msg %>',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+    });
+</script>
+<% } %>
+
 </body>
 </html>

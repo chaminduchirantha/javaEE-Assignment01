@@ -45,11 +45,18 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <% String msg = (String) request.getAttribute("message"); %>
 <% if (msg != null) { %>
 <script>
-    alert("<%= msg %>");
+    Swal.fire({
+        icon: 'info',
+        title: 'Notification',
+        text: '<%= msg %>',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+    });
 </script>
 <% } %>
 </body>

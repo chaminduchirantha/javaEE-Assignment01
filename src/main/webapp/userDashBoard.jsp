@@ -63,26 +63,26 @@
                             <button type="submit" class="btn btn-outline-primary">View My Complaints</button>
                         </div>
                     </form>
-
-                    <c:if test="${not empty message}">
-                        <div class="alert alert-info mt-3"></div>
-                    </c:if>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<% String msg = (String) request.getAttribute("message"); %>
+<% if (msg != null) { %>
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Login Success',
+        text: '<%= msg %>',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+    });
+
+    <% } %>
+
+</script>
 </body>
 </html>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const usernameInput = document.getElementById('username');
-        const hiddenInput = document.getElementById('hiddenUname');
-
-        usernameInput.addEventListener('input', function () {
-            hiddenInput.value = usernameInput.value;
-        });
-    });
-</script>

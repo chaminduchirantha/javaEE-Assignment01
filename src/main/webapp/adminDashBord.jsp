@@ -1,5 +1,5 @@
-<%@ page import="lk.ijse.gdse.model.ComplainModel" %>
-<%@ page import="lk.ijse.gdse.dto.ComplainDto" %>
+<%@ page import="lk.ijse.gdse.Dao.ComplainModel" %>
+<%@ page import="lk.ijse.gdse.model.ComplainDto" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: PCplusss
@@ -79,6 +79,35 @@
         </tbody>
     </table>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<%
+    String msg = (String) request.getAttribute("message");
+    String icon = "success";
+    String title = "Success";
+
+    if (msg != null) {
+        if (msg.toLowerCase().contains("fail")) {
+            icon = "error";
+            title = "Error";
+        } else if (msg.toLowerCase().contains("delete")) {
+            title = "Delete Success";
+        } else if (msg.toLowerCase().contains("update")) {
+            title = "Update Success";
+        }
+%>
+<script>
+    Swal.fire({
+        icon: '<%= icon %>',
+        title: '<%= title %>',
+        text: '<%= msg %>',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+    });
+</script>
+<% } %>
+
 
 </body>
 </html>

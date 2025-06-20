@@ -26,8 +26,13 @@
 
         <div class="mb-3">
           <label>Status</label>
-          <input type="text" name="status" class="form-control" value="<%= request.getParameter("status") %>" required>
+          <select name="status" class="form-control" required>
+            <option value="inProgress" <%= "inProgress".equals(request.getParameter("status")) ? "selected" : "" %>>In Progress</option>
+            <option value="resolved" <%= "resolved".equals(request.getParameter("status")) ? "selected" : "" %>>Complaint is Resolved</option>
+            <option value="rejected" <%= "rejected".equals(request.getParameter("status")) ? "selected" : "" %>>Complaint is Rejected</option>
+          </select>
         </div>
+
 
         <div class="text-end">
           <button type="submit" class="btn btn-primary">Update Status</button>
